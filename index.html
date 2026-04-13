@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>BCM Boys Hostel | Premium Student Living in Horamavu, Bangalore</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #1E2A3E;
+      scroll-behavior: smooth;
+    }
+
+    /* Color variables */
+    :root {
+      --deep-blue: #0F2B4D;
+      --deep-blue-light: #1a3a60;
+      --light-gray: #F8FAFE;
+      --border-light: #EFF3F8;
+      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.08);
+      --transition: all 0.25s ease;
+    }
+
+    /* Sticky Navigation */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 1px 6px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--deep-blue) 0%, #2C5282 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #2D3A4B;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--deep-blue);
+      transform: translateY(-1px);
+    }
+
+    /* Buttons & Global */
+    .btn-primary {
+      background-color: var(--deep-blue);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-block;
+      text-decoration: none;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .btn-primary:hover {
+      background-color: #1e3e64;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(15, 43, 77, 0.2);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid white;
+      color: white;
+      padding: 0.75rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: var(--transition);
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--deep-blue);
+      transform: translateY(-2px);
+    }
+
+    .section {
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--deep-blue);
+      letter-spacing: -0.01em;
+    }
+
+    .section-sub {
+      color: #5A6E84;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(105deg, rgba(15,43,77,0.75) 0%, rgba(0,0,0,0.5) 100%), url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1600&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 650px;
+      padding: 2rem;
+      animation: fadeUp 0.8s ease-out;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Cards Grid (Rooms + Facilities) */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .room-card, .facility-card, .testimonial-card {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid var(--border-light);
+      text-align: center;
+    }
+
+    .room-card:hover, .facility-card:hover, .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .room-icon, .facility-icon {
+      font-size: 2.8rem;
+      color: var(--deep-blue);
+      margin-bottom: 1rem;
+    }
+
+    .room-card h3, .facility-card h3 {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--deep-blue);
+      background: #F0F4FA;
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .room-feature {
+      font-size: 0.9rem;
+      color: #5A6E84;
+      margin-top: 0.5rem;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Location Section */
+    .location-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      background: var(--light-gray);
+      border-radius: 32px;
+      padding: 1.8rem;
+    }
+
+    .location-info {
+      flex: 1.2;
+    }
+
+    .location-map {
+      flex: 1.8;
+      min-height: 320px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nearby-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .nearby-badge {
+      background: white;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--deep-blue);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    /* Testimonials */
+    .testimonial-card {
+      text-align: left;
+      padding: 1.8rem;
+    }
+
+    .stars {
+      color: #F5B042;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-text {
+      font-style: normal;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+      color: #2C3E50;
+    }
+
+    .student-name {
+      font-weight: 700;
+      color: var(--deep-blue);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: white;
+      border-radius: 32px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border-radius: 48px;
+      border: 1.5px solid #E2E8F0;
+      font-family: 'Inter', sans-serif;
+      transition: var(--transition);
+      font-size: 1rem;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--deep-blue);
+      box-shadow: 0 0 0 3px rgba(15,43,77,0.1);
+    }
+
+    /* Footer */
+    footer {
+      background: #F9FBFE;
+      border-top: 1px solid var(--border-light);
+      padding: 2.5rem 2rem;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-col h4 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .footer-col p, .footer-col a {
+      color: #4B5B6C;
+      text-decoration: none;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .quick-links a:hover {
+      color: var(--deep-blue);
+    }
+
+    /* utility */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    html {
+      scroll-padding-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .nav-links {
+        justify-content: center;
+        gap: 1.2rem;
+      }
+      .hero-content h1 {
+        font-size: 2.3rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .location-wrapper {
+        flex-direction: column;
+      }
+      .hero {
+        min-height: 70vh;
+      }
+      .section {
+        padding: 3rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sticky Navigation -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo"><i class="fas fa-home" style="margin-right: 6px; color: var(--deep-blue);"></i> BCM Boys Hostel</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#facilities">Facilities</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#location">Location</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content container">
+      <h1>BCM Boys Hostel – Horamavu</h1>
+      <p>Safe, Affordable & Comfortable Living for Students</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Apply Now <i class="fas fa-arrow-right"></i></a>
+        <a href="#facilities" class="btn-outline">View Facilities</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rooms Section -->
+  <section id="rooms" class="section">
+    <div class="container">
+      <h2 class="section-title">Modern & Comfortable Rooms</h2>
+      <p class="section-sub">Choose your perfect sharing space with premium amenities</p>
+      <div class="cards-grid">
+        <!-- 2 Sharing -->
+        <div class="room-card">
+          <div class="room-icon"><i class="fas fa-bed"></i><i class="fas fa-user-friends" style="margin-left: 6px;"></i></div>
+          <h3>5 Sharing</h3>
+          <div class="price"></div>
+          <p>Spacious room with study table, attached washroom, individual cupboards.</p>
+          <div class="room-feature"><i class="fas fa-wifi"></i> High-speed WiFi & meal included</div>
+        </div>
+        <!-- 3 Sharing -->
+        <div class="room-card">
+          <div class="room-icon"><i class="fas fa-users"></i></div>
+          <h3>6 Sharing</h3>
+          <div class="price"></div>
+          <p>Well-ventilated, comfortable bunks with common lounge & mess.</p>
+          <div class="room-feature"><i class="fas fa-utensils"></i> Breakfast + Dinner</div>
+        </div>
+        <!-- 4 Sharing -->
+        <div class="room-card">
+          <div class="room-icon"><i class="fas fa-user-plus"></i><i class="fas fa-bed"></i></div>
+          <h3>7 Sharing</h3>
+          <div class="price"></div>
+          <p>Budget-friendly with all essential facilities & 24/7 study support.</p>
+          <div class="room-feature"><i class="fas fa-shield-alt"></i> Secure lockers & hygiene</div>
+        </div>
+      </div>
+      <p style="font-size: 0.8rem; margin-top: 1rem; text-align: center;">*Inclusive of mess, electricity, and high-speed WiFi</p>
+    </div>
+  </section>
+
+  <!-- Facilities Section -->
+  <section id="facilities" class="section" style="background-color: var(--light-gray);">
+    <div class="container">
+      <h2 class="section-title">Premium Facilities for Students</h2>
+      <p class="section-sub">Everything you need to focus, grow & feel at home</p>
+      <div class="cards-grid">
+        <div class="facility-card"><div class="facility-icon"><i class="fas fa-utensils"></i></div><h3>Free Food (Mess)</h3><p>Nutritious vegetarian meals, 3 times a day + evening snacks.</p></div>
+        <div class="facility-card"><div class="facility-icon"><i class="fas fa-wifi"></i></div><h3>High-Speed WiFi</h3><p>100 Mbps fiber connection for seamless online learning.</p></div>
+        <div class="facility-card"><div class="facility-icon"><i class="fas fa-book-open"></i></div><h3>Study Hall</h3><p>Dedicated silent zone with ample lighting & power ports.</p></div>
+        <div class="facility-card"><div class="facility-icon"><i class="fas fa-shield-alt"></i></div><h3>24/7 Security</h3><p>CCTV surveillance, biometric access & vigilant staff.</p></div>
+        <div class="facility-card"><div class="facility-icon"><i class="fas fa-tint"></i></div><h3>Clean Water</h3><p>RO purified drinking water + 24/7 hot water available.</p></div>
+        <div class="facility-card"><div class="facility-icon"><i class="fas fa-bolt"></i></div><h3>Power Backup</h3><p>Inverter & generator backup for uninterrupted living.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <h2 class="section-title">Life at BCM Boys Hostel</h2>
+      <p class="section-sub">Modern spaces, warm community & vibrant atmosphere</p>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFBTZrNPDOvXE0qnDxdtPMDqnQiX-CTexcLVrSefdKoT6o8hCPMdBP0ytubEjKbYGj6a2d76Io1tbdXJHXbpmbNA9apLAwJEFHa8OyKW-o-5BjsmJCaV5U-_1reIGhe6gtX24ia9XKj1bPC=w408-h306-k-no" alt="Modern hostel room interior" loading="lazy"></div>
+        <div class="gallery-item"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGOX-PNmRHcG3aDLWNTiwHOvxEJjT08hEshazPon0_ILeoHD9yHM4WdbdKhv3BUBwjJMi-VSBPXXkJGBhzlnn7kh1-F6k1C8xKY--N9XhsrrNlKNV7YpiVvX3-mMe67K0AAW12k_BECZXn7=w397-h298-k-no" alt="Hostel building exterior" loading="lazy"></div>
+        <div class="gallery-item"><img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGT5u_L3-1bKLKVA2cGNaFApr24Z0LaiG4_eDEQR-VneIn0OoRptFJV9lb6LJkFuwDQgLoWZl3tBjFf5luukO0vRwgh2VpjvK6Hp0bqWJYH5R9hVKgQzAPZx1sUI8X4K5SEiIbwvxpeGNve=w224-h325-k-no" alt="Mess dining area" loading="lazy"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=450&fit=crop" alt="Study hall with students" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section with Map & Nearby -->
+  <section id="location" class="section" style="background-color: var(--light-gray);">
+    <div class="container">
+      <h2 class="section-title">Prime Location in Horamavu</h2>
+      <p class="section-sub">Well-connected to top colleges & city transport hubs</p>
+      <div class="location-wrapper">
+        <div class="location-info">
+          <h3 style="font-size: 1.5rem; font-weight: 600;"><i class="fas fa-map-marker-alt" style="color: var(--deep-blue);"></i> BCM Boys Hostel</h3>
+          <p>Horamavu Main Road, Kalyan Nagar Post, Bangalore - 560043</p>
+          <div style="margin: 1.2rem 0;"><strong>🚍 Nearby Colleges & Transport:</strong></div>
+          <div class="nearby-list">
+            <span class="nearby-badge"><i class="fas fa-school"></i> S.E.A College of engineering (8 km)</span>
+            <span class="nearby-badge"><i class="fas fa-university"></i> East Point College</span>
+            <span class="nearby-badge"><i class="fas fa-bus"></i> BMTC Bus Depot</span>
+            <span class="nearby-badge"><i class="fas fa-subway"></i> Metro: Baiyappanahalli (7km)</span>
+            <span class="nearby-badge"><i class="fas fa-graduation-cap"></i> MVJ College of Engg</span>
+            <span class="nearby-badge"><i class="fas fa-train"></i> KR Puram Railway Station</span>
+          </div>
+          <p style="margin-top: 1.2rem; font-size: 0.9rem;">✅ Frequent buses, Ola/Uber & metro connectivity. Close to malls & hospitals.</p>
+        </div>
+        <div class="location-map">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15548.542646303748!2d77.6487595!3d13.0222009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17e9f0f5b7a5%3A0x9b7cbf7c0d4b0e5b!2sHoramavu%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1712123456789!5m2!1sen!2sin" 
+            width="100%" height="100%" style="border:0; min-height: 300px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <h2 class="section-title">What Our Students Say</h2>
+      <p class="section-sub">Trusted by hundreds of students across Bangalore</p>
+      <div class="cards-grid">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">"Clean rooms, amazing mess food, and 24/7 WiFi. The study hall really helped me during exams. Highly recommended for students looking for safe stay."</p>
+          <p class="student-name">– Krishna Patel., SEA college of engineering</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="testimonial-text">"Best decision moving to BCM Hostel. Security is top-notch, and the staff is caring. The location is super convenient for college & weekend outings."</p>
+          <p class="student-name">– Aditya K., MVJ</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">"Affordable and premium at the same time. Hot water, clean drinking water, and regular maintenance. Very homely vibe!"</p>
+          <p class="student-name">– Chethan S., East Point College</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section" style="background-color: var(--light-gray);">
+    <div class="container">
+      <h2 class="section-title">Reserve Your Room Today</h2>
+      <p class="section-sub">Limited seats available for the upcoming academic year</p>
+      <div class="contact-form">
+        <form id="hostelContactForm">
+          <div class="form-group"><input type="text" id="name" placeholder="Full Name *" required></div>
+          <div class="form-group"><input type="tel" id="phone" placeholder="Phone Number *" required></div>
+          <div class="form-group"><input type="text" id="college" placeholder="College / Institution *" required></div>
+          <button type="submit" class="btn-primary" style="width:100%; background: var(--deep-blue);"><i class="fas fa-paper-plane"></i> Apply Now</button>
+          <p style="font-size: 0.8rem; margin-top: 1rem; text-align: center;">Our team will contact you within 24 hours.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4><i class="fas fa-building"></i> BCM Boys Hostel</h4>
+      <p>Horamavu, Kalyan Nagar Post,<br>Bangalore - 560043, Karnataka, India</p>
+      <p><i class="fas fa-phone-alt"></i> +91 98765 43210<br><i class="fas fa-envelope"></i> stay@bcmhostel.com</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <div class="quick-links">
+        <a href="#home">Home</a>
+        <a href="#rooms">Rooms</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Apply Now</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <p><i class="fab fa-instagram"></i> @bcmboyshostel<br><i class="fab fa-facebook"></i> BCM Hostel Official<br><i class="fab fa-whatsapp"></i> +91 98765 43210 (WhatsApp)</p>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 2rem; font-size: 0.75rem; color: #8a9bb0;">© 2025 BCM Boys Hostel – Safe, Smart & Student-Focused Living</div>
+</footer>
+
+<script>
+  // Smooth scroll for all anchor links (handled via CSS but enforce offset)
+  document.querySelectorAll('.nav-links a, .hero-buttons a, .quick-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId.startsWith('#')) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          const offsetTop = targetElement.offsetTop - 70;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+
+  // Contact Form handling (premium alert)
+  const contactForm = document.getElementById('hostelContactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const college = document.getElementById('college').value.trim();
+      if (!name || !phone || !college) {
+        alert('Please fill all the fields (Name, Phone, College)');
+        return;
+      }
+      alert(`Thank you ${name}! Your application has been received. Our hostel manager will reach out to you shortly. Welcome to BCM Boys Hostel! 🎓`);
+      contactForm.reset();
+    });
+  }
+</script>
+</body>
+</html>
